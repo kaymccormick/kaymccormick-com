@@ -1,3 +1,3 @@
 import React from 'react'
 
-export default (props) => <header>{props.children}</header>
+export default (props) => <header {...props}>{props.children}</header>
