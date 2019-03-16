@@ -10,11 +10,10 @@ import './Layout.scss'
 const sectionBackgroundColor = '#f4cd14'
 //ab8f0e
 const Section = (props) => <div className="nav1__section"><Link href={props.href}><a>{props.title}</a></Link></div>;
-
 const Navigation = (props) => <nav className="nav1">{props.children}</nav> 
 
-const siteSections = { 'Software': { href: '/software' },
-		       'Personal': { href: '/personal' },
+const siteSections = { 'Development': { href: '/dev' },
+		       'Social': { href: '/social' },
 		       'Seattle': { href: '/seattle' },}
 
 
@@ -27,5 +26,5 @@ export default (props) => <div>
     <title>{props.title}</title>
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <Structure area1={headerArea} area2={navigationArea} area3={props.chidren}/>
+    <Structure header1={headerArea} nav1={navigationArea} mainarea={props.chidren}/>
 </div>

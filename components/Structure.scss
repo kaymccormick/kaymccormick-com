@@ -1,3 +1,27 @@
+@include "../styles/_include";
+
 .tlgrid {
     display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 4fr;
+
+    .tlgrid__header1 {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+    }
+    .tlgrid__nav1 {
+	grid-column-start:1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 3;
+    }
+    .tlgrid__mainarea {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+    }
 }
+
