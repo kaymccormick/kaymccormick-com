@@ -31,9 +31,9 @@ class DocPage extends React.Component {
 	const props = { ...this.props}
 	if(props.server === undefined) {
 	    props.server = false;
-	}
+	}//	    <Viewer {...props}/>
 	return <Layout title="Kay McCormick">
-	    <Viewer {...props}/>
+	    test
 	    </Layout>;
     }
 }

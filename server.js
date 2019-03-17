@@ -14,7 +14,6 @@ app.prepare().then(() => {
     server.use(logger(dev ? 'dev' : 'combined'))
 
     server.get('/doc/*', (req, res) => {
-	console.log('poop')
 	app.render(req, res, '/doc')
     })
 	       
