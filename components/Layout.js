@@ -7,8 +7,7 @@ import Structure from './Structure'
 import Header from './Header'
 import './Layout.scss'
 
-const sectionBackgroundColor = '#f4cd14'
-//ab8f0e
+const sectionBackgroundColor = '#f4cd14' //ab8f0e
 const Section = (props) => <div className="nav1__section"><Link href={props.href}><a>{props.title}</a></Link></div>;
 const Navigation = (props) => <nav className="nav1">{props.children}</nav> 
 

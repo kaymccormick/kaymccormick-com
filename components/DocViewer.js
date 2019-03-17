@@ -1,29 +1,24 @@
 import React from 'react'
 import { setupSaxParser } from 'docutils-react/lib/getComponentForXmlSax'
 import BaseDocViewer from './BaseDocViewer'
+import { loadDocument } from './DocViewerAxios'
 
 export default class Viewer extends React.Component {
     constructor(props) {
 	super(props);
-	if(prop.server) {
-	} else {
-	    this.docViewer = new require('./DocViewerClient');
-	    this.state = { component: props.component }
-	}
+	this.state = { component: props.component }
     }
 
-    componentDidMount()
+/*    componentDidMount()
     {
-	const {server} = this.props;
-	if(this.props.component) {
+	const server = this.props.server;
+	if(this.state.component && React.isValidElement(this.state.component)) {
 	    return;
 	}
 	if(!server) {
-	    this.docViewer.loadDocument({server, docName: this.props.docName, baseHref: this.props.baseHref })
-		.then(({component}) => this.setState({component}))
-		.catch(err => console.log(err.stack));
+//	    loadDocument({server, docName: this.props.docName, appDocRoot: process.env.appDocRoot, appBaseUrl: process.env.appBaseUrl, }).then(({component}) => this.setState({component})).catch(err => console.log(err.stack));
 	}
-    }
+    }*/
 
     render() {
 	return React.isValidElement(this.state.component) ? this.state.component : null;

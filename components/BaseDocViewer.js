@@ -1,7 +1,7 @@
 import React from 'react'
 import { setupSaxParser} from 'docutils-react/lib/getComponentForXmlSax'
 
-function getDocumentParser({ server,resolve, reject }) {
+export function getDocumentParser({ server,resolve, reject }) {
     const context = {};
     const { parser } = setupSaxParser({context});
     parser.onend = () => {
@@ -16,6 +16,4 @@ function getDocumentParser({ server,resolve, reject }) {
     return parser;
 }
 
-export default {
-    getDocumentParser,
-}
+

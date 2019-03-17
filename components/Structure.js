@@ -1,4 +1,4 @@
-import'./Structure.scss'
+import './Structure.scss'
 
 export default (props) =>
     <div className="tlgrid">
