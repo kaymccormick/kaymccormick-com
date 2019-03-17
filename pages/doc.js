@@ -20,8 +20,7 @@ class DocPage extends React.Component {
 	    const result = await loadDocumentData({ ...defaultProps, server })
 		  .then(data => ({ data }))
 		  .catch(error => {
-		      console.log(error.stack);
-		      return {};
+//		      console.log(error.stack);
 		  });
 	    
 	    return result
@@ -37,7 +36,10 @@ class DocPage extends React.Component {
     }
     
     render() {
-	const component = getComponentForXmlSync(this.props.data);
+	let  component = null;
+	if(this.props.data) {
+	    component = getComponentForXmlSync(this.props.data);
+	}
 	///<div className="log">{this.state.log}</div><div><table>{Object.keys(props).map(p => <tr><th>{p}</th><td>{"" + props[p]}</td><td>{React.isValidElement(props[p]) ? 'react-element' : ''}</td></tr>)}</table><Viewer {...props}/></div>
 	return <Layout title="Kay McCormick"><Viewer component={component} {...this.props}/>
 	    </Layout>;
