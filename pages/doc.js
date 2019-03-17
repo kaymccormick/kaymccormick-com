@@ -2,23 +2,27 @@ import React from 'react'
 import Viewer from '../components/DocViewer'
 import Header from '../components/Header'
 import Layout from '../components/Layout'
-import { loadDocument } from '../components/DocViewerAxios'
+import { loadDocumentData } from '../components/DocViewerAxios'
+import { getComponentForXmlSync } from 'docutils-react/lib/getComponentForXmlSax'
 import PropTypes from 'prop-types'
+import './doc.scss'
 
 class DocPage extends React.Component {
-    static async getInitialProps({req}) {
+    static async getInitialProps(ctx) {
+	const { req, query } = ctx;
 	const defaultProps = {
 	    appDocRoot: process.env.appDocRoot,
 	    appBaseUrl: process.env.appBaseUrl,
-	    docName: 'index',
+	    docName: query.docName,
 	};
 	if(req) {
 	    const server = true;
-	    const result = await loadDocument({ ...defaultProps,
-		server }).catch(error => {
-		    console.log(error.stack);
-		    return {};
-		});
+	    const result = await loadDocumentData({ ...defaultProps, server })
+		  .then(data => ({ data }))
+		  .catch(error => {
+		      console.log(error.stack);
+		      return {};
+		  });
 	    
 	    return result
 	}
@@ -26,14 +30,16 @@ class DocPage extends React.Component {
 	console.log(x);
 	return x;
     }
+
+    constructor(props) {
+	super(props);
+	this.state = { log: [<div>Constructed</div>] }
+    }
     
     render() {
-	const props = { ...this.props}
-	if(props.server === undefined) {
-	    props.server = false;
-	}//	    <Viewer {...props}/>
-	return <Layout title="Kay McCormick">
-	    test
+	const component = getComponentForXmlSync(this.props.data);
+	///<div className="log">{this.state.log}</div><div><table>{Object.keys(props).map(p => <tr><th>{p}</th><td>{"" + props[p]}</td><td>{React.isValidElement(props[p]) ? 'react-element' : ''}</td></tr>)}</table><Viewer {...props}/></div>
+	return <Layout title="Kay McCormick"><Viewer component={component} {...this.props}/>
 	    </Layout>;
     }
 }

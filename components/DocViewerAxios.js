@@ -18,6 +18,14 @@ function handleDocumentStream({server, stream, parser}) {
     parser.close();
 }
 
+export function loadDocumentData(props) {
+    return axios.get(getDocumentUrl(props)).then(response =>
+						 response.data);
+}
+
+/**
+ *
+ */
 export function loadDocument(props) {
     const { server } = props;
     if(server === undefined) {

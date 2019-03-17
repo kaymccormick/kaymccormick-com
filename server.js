@@ -3,6 +3,7 @@
 const express = require('express')
 const next = require('next')
 var logger = require('morgan');
+var querystring = require('querystring');
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -14,7 +15,9 @@ app.prepare().then(() => {
     server.use(logger(dev ? 'dev' : 'combined'))
 
     server.get('/doc/*', (req, res) => {
-	app.render(req, res, '/doc')
+	const docName = req.path.substring(5);
+	console.log(`docname is ${docName}`);
+	app.render(req, res, '/doc', { docName })
     })
 	       
     server.get('*', (req, res) => {
