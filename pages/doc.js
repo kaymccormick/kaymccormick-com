@@ -6,9 +6,21 @@ import Layout from '../components/Layout'
 export default class extends React.Component {
     static async getInitialProps({req}) {
 	if(req) {
-	    const DocViewerServer = new require('../components/DocViewerServer');
+	    const docViewer = require('../components/DocViewerServer').default;
+	    
 	    const server = true;
-	    return docViewer.loadDocument({server, docName: 'index'});
+	    if(docViewer.loadDocument) {
+		return docViewer.loadDocument({fs: require('fs'), server, docName: 'index'}).catch(error => {
+		    console.log(error.stack);
+		    return {};
+		}).then(() => {
+		    return { };
+		});
+
+	    }
+	    console.log(docViewer);
+	    return {}
+
 	}
 	return Promise.resolve({ server: false });
     }
