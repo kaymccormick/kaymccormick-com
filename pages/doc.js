@@ -7,10 +7,9 @@ export default class extends React.Component {
     static async getInitialProps({req}) {
 	if(req) {
 	    const docViewer = require('../components/DocViewerServer').default;
-	    
 	    const server = true;
 	    if(docViewer.loadDocument) {
-		return docViewer.loadDocument({fs: require('fs'), server, docName: 'index'}).catch(error => {
+		return docViewer.loadDocument({createReadStream: req.createReadStream, server, docName: 'index'}).catch(error => {
 		    console.log(error.stack);
 		    return {};
 		}).then(() => {

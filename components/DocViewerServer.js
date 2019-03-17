@@ -3,7 +3,7 @@ import { setupSaxParser} from 'docutils-react/lib/getComponentForXmlSax'
 import BaseDocViewer from './BaseDocViewer'
 
 function getDocumentStream(props) {
-    return Promise.resolve(props.fs.createReadStream(path.resolve(props.docPath, props.docName + '.xml')));
+    return Promise.resolve(props.createReadStream(props.docPath + '/' + props.docName + '.xml'));
 }
 
 function nodeStreamReader(stream, parser) {
