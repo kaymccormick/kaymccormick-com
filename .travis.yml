@@ -1,0 +1,5 @@
+language: node_js
+node_js:
+ - 11.9.0
+script: yarn next build && yarn next export
+
