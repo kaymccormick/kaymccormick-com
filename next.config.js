@@ -27,6 +27,7 @@ module.exports = { ...withSass(),
 		       var docName;
 		       var r = {
 			   '/': { page: '/'},
+			   '/error': { page: '/errorPage' },
 			   '/dev': { page: '/dev'},
 		       }
 		       for(docName of files) {
