@@ -6,7 +6,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Structure from './Structure'
 import Header from './Header'
-import './Layout.scss'
 import PropTypes from 'prop-types'
 
 

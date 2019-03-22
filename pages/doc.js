@@ -5,7 +5,6 @@ import Layout from '../components/Layout'
 import { loadDocumentData } from '../components/DocViewerAxios'
 import { getComponentForXmlSync } from 'docutils-react/lib/getComponentForXmlSax'
 import PropTypes from 'prop-types'
-import './doc.scss'
 
 class DocPage extends React.Component {
     static async getInitialProps(ctx) {

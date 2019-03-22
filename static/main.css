@@ -1,0 +1,65 @@
+body {
+  background-color: #306E8D;
+}
+
+.font2 {
+  font-family: comrade,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*    font-family: pulpo-rust-25, serif;
+    font-weight: 400;
+    font-style: normal;*/
+nav.nav1 {
+  width: fit-content;
+  padding: .3rem;
+}
+
+.nav1__section {
+  background-color: #FFF705;
+  font-size: 200%;
+  margin: .25rem;
+  padding: .8rem;
+  margin-right: 2em;
+  border-radius: 8px;
+}
+.nav1__section:hover {
+  background-color: #B2B071;
+}
+
+a {
+  font-family: Sans Serif;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  color: #00AAFF;
+  /*    letter-spacing: .1em;*/
+  /*  border: 1px solid black;*/
+}
+
+.tlgrid {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr;
+  grid-template-rows: 1fr 4fr;
+}
+.tlgrid .tlgrid__header1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.tlgrid .tlgrid__nav1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.tlgrid .tlgrid__mainarea {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -10,7 +10,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head/>
+        <Head>
+	    <link rel="stylesheet" href="/static/main.css" type="text/css"/>
+	    </Head>
         <body className="myBody">
           <Main />
           <NextScript />

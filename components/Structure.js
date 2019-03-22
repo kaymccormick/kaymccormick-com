@@ -1,4 +1,3 @@
-import './Structure.scss'
 import React from 'react'
 
 class Structure extends React.Component {
