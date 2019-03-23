@@ -11,7 +11,7 @@ pipeline {
 		sh 'cd node_modules/docutils-react && yarn && cd ../..'
 		sh 'yarn next build'
 		sh 'mkdir -p build'
-		sh 'tar --exclude node_modules --exclude build --exclude-vcs -zcv . -f build/kaymccormick-com.tar.gz'		
+		sh 'tar --exclude build --exclude-vcs -zcv . -f build/kaymccormick-com.tar.gz'		
             }
         }
     }
