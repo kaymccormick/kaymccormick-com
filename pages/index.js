@@ -1,9 +1,19 @@
 import React from 'react'
 
-import Header from '../components/Header'
 import Layout from '../components/Layout'
 
-export default (props) => <Layout title="Kay McCormick">
-    <div>Main page</div></Layout>;
+export default class Index extends React.Component {
+    static async getInitialProps({req}) {
+	if(req) {
+	    return { HEPTETSRV: req.cookies ? req.cookies.HEPTETSRV: null };
+	}
+	return {}
+    }
+    
+    render() {
+	return <Layout title="Kay McCormick"><div>Main page with server cookie {this.props.HEPTETSRV}</div></Layout>;
+    }
+}
+
     
     
