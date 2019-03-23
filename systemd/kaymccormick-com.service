@@ -1,0 +1,14 @@
+[Unit]
+Description=KayMcCormick.com node backend
+
+[Service]
+Type=Simple
+Environment="NODE_ENV=production"
+ExecStart=/usr/bin/node /heptet/server/kaymccormick-com/node_modules/.bin/next start -p 7701
+User=kcom
+#StandardOutput=null
+WorkingDirectory=/heptet/server/kaymccormick-com
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
