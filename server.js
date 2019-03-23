@@ -5,6 +5,8 @@ const express = require('express')
 const next = require('next')
 var logger = require('morgan');
 var querystring = require('querystring');
+var cookieParser = require('cookie-parser');
+
 
 const icinga2Router = require('./routes/icinga2')
 
@@ -20,6 +22,7 @@ app.prepare().then(() => {
 	    return true ;
 	}
     } }))
+    server.use(cookieParser());
 
     server.get('/doc/*', (req, res) => {
 	const docName = req.path.substring(5);
