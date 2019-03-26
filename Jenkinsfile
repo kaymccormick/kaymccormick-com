@@ -10,14 +10,14 @@ pipeline {
 		sh 'wget -O - https://jenkins.heptet.us/job/github/job/docutils-react/job/master/lastSuccessfulBuild/artifact/build/docutils-react.tar.gz | tar -zxf - -C node_modules/docutils-react'
 		sh 'cd node_modules/docutils-react && yarn && cd ../..'
 		sh 'yarn next build'
-		sh 'mkdir -p build'
-		sh 'tar --exclude kaymccormick-com.tar.gz --exclude-vcs -zc . -f kaymccormick-com.tar.gz'
+		sh 'mkdir -p tmp123'
+		sh 'tar --exclude tmp123 --exclude-vcs -zc . -f tmp123/kaymccormick-com.tar.gz'
             }
         }
     }
    post {
       always {
-      archiveArtifacts artifacts: 'kaymccormick-com*.tar.gz', fingerprint: true
+      archiveArtifacts artifacts: 'tmp123/kaymccormick-com*.tar.gz', fingerprint: true
       }
       }
  
