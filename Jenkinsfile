@@ -1,6 +1,9 @@
 pipeline {
     options { timeout(time: 10, unit: 'MINUTES') }
-    agent { docker { image 'node:latest' } }
+    agent { docker {
+    image 'node:latest'
+    args '-v $HOME/.cache/v4:/root/.cache/v4'
+ } }
     stages {
         stage('build') {
             steps {
