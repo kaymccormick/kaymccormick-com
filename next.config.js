@@ -24,19 +24,15 @@ console.log(files)
 const withSass = require('@zeit/next-sass')
 module.exports = { ...withSass(),
 		   exportPathMap: async function(defaultPathMap) {
+		       console.log(defaultPathMap);
 		       var docName;
-		       var r = {
-			   '/': { page: '/'},
-			   '/error': { page: '/errorPage' },
-			   '/dev': { page: '/dev'},
-		       }
 		       for(docName of files) {
 			   docName =docName.substring(0, docName.length - 4)
 			   console.log(docName)
-			   r[`/doc/${docName}`] = { page: '/doc',
+			   defaultPathMap[`/doc/${docName}`] = { page: '/doc',
 					       query: { docName} }
 		       }
-		       return r;
+		       return defaultPathMap;
 		   },
 
 		   env: {
