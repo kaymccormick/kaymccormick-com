@@ -11,13 +11,13 @@ pipeline {
 		sh 'cd node_modules/docutils-react && yarn && cd ../..'
 		sh 'yarn next build'
 		sh 'mkdir -p build'
-		sh 'tar --exclude build --exclude-vcs -zcv . -f build/kaymccormick-com.tar.gz'		
+		sh 'tar --exclude kaymccormick-com.tar.gz --exclude-vcs -zcv . -f kaymccormick-com.tar.gz'
             }
         }
     }
    post {
       always {
-      archiveArtifacts artifacts: 'build/*.tar.gz', fingerprint: true
+      archiveArtifacts artifacts: 'kaymccormick-com*.tar.gz', fingerprint: true
       }
       }
  
