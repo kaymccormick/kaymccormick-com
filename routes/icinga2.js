@@ -1,26 +1,25 @@
 
 
-var express = require('express');
-var router = express.Router();
-var axios = require('axios')
-//curl -v -u root:4733bcadff33ab0e --cacert cacert.pem https://cerberus:5665/v1/objects/hosts | json_pp | less
+const express = require('express');
+const router = express.Router();
+const axios = require('axios')
+const https = require('https');
+const fs = require('fs')
+const path = require('path');
 
-router.get('/icinga2/badService', async function(req, res, next) {
-    const url = `https://cerberus:5665/v1/objects/service?filter=service.state!=ServiceOK
-`
+/* GET users listing. */
+router.get('/icinga2', async function(req, res, next) {
+    const url = new URL('/v1/objects/services', req.appConfig.icinga2.endpoint).href    
+    const httpsAgent = https.Agent({ ca: [ req.customCaCrt ] });
     return axios.get(url,
-		     { /*httpsAgent: agent, */
-			 auth: { username: 'root', password: '4733bcadff33ab0e' } })
+		     { httpsAgent, auth: req.appConfig.icinga2.auth })
 	.then(response => response.data).
-	then(data => {
-	    console.log(data);
-	    return JSON.stringify(data.results.map(o => o.name));
-	}).then(s => {
+	then(data => JSON.stringify(data)).then(s => {
 	    res.send(s);
 	})
 	.catch(error => {
-	    res.send(error.stack);
 	    console.log(error.stack);
+	    next();
 	});
 });
 
